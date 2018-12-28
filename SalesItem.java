@@ -129,10 +129,11 @@ public class SalesItem
      * them.
      */
     public Comment findMostHelpfulComment()
-    {
+    {        
         Iterator<Comment> it = comments.iterator();
-        Comment best = it.next();
+        Comment best = null;
         while(it.hasNext()) {
+            best = it.next();
             Comment current = it.next();
             if(current.getVoteCount() > best.getVoteCount()) {
                 best = current;
@@ -147,7 +148,7 @@ public class SalesItem
      */
     private boolean ratingInvalid(int rating)
     {
-        return rating < 0 || rating > 5;
+        return rating < 1 || rating > 5;
     }
     
     /**
